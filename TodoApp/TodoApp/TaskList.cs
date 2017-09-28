@@ -22,7 +22,6 @@ namespace TodoApp
         {
             this.text = text;
             this.path = path;
-   
         }
    
         public void FirstFile()
@@ -39,10 +38,17 @@ namespace TodoApp
         {
             text = File.ReadAllLines(path);
 
-            for (int i = 1; i <= text.Length; i++)
+            if (text.Length == 0)
             {
-                Console.WriteLine("{0} - {1}", i, text[i-1]);
+                Console.WriteLine("No todos for today! :)");
             }
+            else
+            {
+                for (int i = 1; i <= text.Length; i++)
+                {
+                    Console.WriteLine("{0} - {1}", i, text[i - 1]);
+                }
+            }        
         }  
     }
 }
