@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TodoApp
 {
@@ -11,6 +7,21 @@ namespace TodoApp
         static void Main(string[] args)
         {
             Welcome();
+
+            TaskList taskList = new TaskList();
+
+            //if (args == null)
+            //{
+            //    return;
+            //}
+            if (args[0] == "-l")
+            {
+                taskList.ReadFile();
+            }
+
+            string[] commands = { "-l", "-a", "-r", "-c" };
+
+
             Console.ReadLine();
         }
         public static void Welcome()
