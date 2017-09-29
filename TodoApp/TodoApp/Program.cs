@@ -10,31 +10,49 @@ namespace TodoApp
 
             TaskList taskList = new TaskList();
             NewTask newTask = new NewTask();
+            RemoveTask removeTask = new RemoveTask();
+            CheckTask checkTask = new CheckTask();
 
             string[] commands = { "-l", "-a", "-r", "-c" };
-
-            if (args.Length == 0)
+            try
             {
-                Welcome();
-                return;
-            }
-
-            if (args[0] == "-l")
-            {
-                taskList.ReadFile();
-            }
-
-            if (args[0] == "-a")
-            {
-                try
+                if (args.Length == 0)
                 {
-                    newTask.AddNewTask(args[1]);
+                    Welcome();
+                    return;
                 }
-                catch (Exception)
+                if (args[0] == "-c")
                 {
-                    Console.WriteLine("Unable to add: no task provided");
-                }   
+                    //taskList.FillFile();
+                    checkTask.Checker(args[1]);
+                }
+
+                if (args[0] == "-l")
+                {
+                    taskList.ReadFile();
+                }
+
+                if (args[0] == "-a")
+                {
+                    try
+                    {
+                        newTask.AddNewTask(args[1]);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Unable to add: no task provided");
+                    }
+                }
+                if (args[0] == "-r")
+                {
+                    removeTask.Remover(args[1]);
+                }
             }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Unsupported argument");
+            }    
         }
 
         public static void Welcome()

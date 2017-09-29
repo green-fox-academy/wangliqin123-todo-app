@@ -24,7 +24,7 @@ namespace TodoApp
             this.path = path;
         }
    
-        public void FirstFile()
+        public void FillFile()
         {
             using (StreamWriter writer = new StreamWriter(path))
             {
