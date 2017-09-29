@@ -27,10 +27,11 @@ namespace TodoApp
 
         public void AddNewTask(string newTask)
         {
-            using (StreamWriter writer = new StreamWriter(path))
-            {
-                writer.WriteLine(newTask);          
-            }
+           
+             using (StreamWriter writer = new StreamWriter(path))
+                 {
+                        writer.WriteLine(newTask);
+                 }
         }
     }
 }

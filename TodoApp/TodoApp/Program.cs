@@ -11,22 +11,41 @@ namespace TodoApp
             TaskList taskList = new TaskList();
             NewTask newTask = new NewTask();
 
+            string[] commands = { "-l", "-a", "-r", "-c" };
+
+            if (args.Length == 0)
+            {
+                Welcome();
+                return;
+            }
+
             if (args[0] == "-l")
             {
                 taskList.ReadFile();
             }
+
             if (args[0] == "-a")
             {
-                newTask.AddNewTask(args[1]);
+                try
+                {
+                    newTask.AddNewTask(args[1]);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to add: no task provided");
+                }   
             }
-            
-            string[] commands = { "-l", "-a", "-r", "-c" };
-
-            Console.ReadLine();
         }
+
         public static void Welcome()
         {
-            Console.WriteLine("Command Line Todo application\n=============================\n\nCommand line arguments:\n -l   Lists all the tasks\n -a   Adds a new task\n -r   Removes an task\n -c   Completes an task\n");
+            Console.WriteLine("Command Line Todo application\n" +
+                              "=============================\n\n " +
+                              "Command line arguments:\n -l " +
+                                " Lists all the tasks\n -a  " +
+                                "Adds a new task\n -r  " +
+                                "Removes an task\n -c  " +
+                                "Completes an task\n");
         } 
     }
 }
