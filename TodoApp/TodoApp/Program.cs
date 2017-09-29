@@ -17,7 +17,7 @@ namespace TodoApp
             }
             if (args[0] == "-a")
             {
-                newTask.AddNewTask();
+                newTask.AddNewTask(args[1]);
             }
             
             string[] commands = { "-l", "-a", "-r", "-c" };
